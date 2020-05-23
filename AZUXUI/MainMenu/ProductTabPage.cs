@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -12,20 +8,10 @@ using System.Windows.Forms;
 using AZUXlib.DataAccess;
 using AZUXlib.Models;
 
-
 namespace AZUXUI
 {
-    public partial class MainMenu : Form
+    public partial class MainMenu
     {
-        public static MainMenu Instance { get; set; }
-        private List<Product> productsList;
-        public MainMenu()
-        {
-            InitializeComponent();
-            //get a reference to this form            
-            Instance = this;
-            UpdateProductDGV();
-        }
 
         private void UpdateProductDGV()
         {
@@ -41,7 +27,7 @@ namespace AZUXUI
             //lock mainform
             this.Enabled = false;
             //set event to unlock mainform when this form is closed
-            productform.FormClosing += delegate { this.Enabled = true; UpdateProductDGV(); };            
+            productform.FormClosing += delegate { this.Enabled = true; UpdateProductDGV(); };
             productform.Show();
         }
 
@@ -130,6 +116,5 @@ namespace AZUXUI
         {
             UpdateProductDGV();
         }
-
     }
 }
